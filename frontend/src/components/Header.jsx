@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Header() {
   return (
@@ -54,13 +55,16 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* CTA Button */}
-        <Link
-          href="/check"
-          className="bg-primary-500 text-white px-6 py-2 rounded-lg hover:bg-primary-600 font-medium shadow-md hover:shadow-lg"
-        >
-          Start Check
-        </Link>
+        <div className="flex items-center gap-4">
+          <ThemeToggle />
+          {/* CTA Button */}
+          <Link
+            href="/check"
+            className="bg-primary-500 text-white px-6 py-2 rounded-lg hover:bg-primary-600 font-medium shadow-md hover:shadow-lg"
+          >
+            Start Check
+          </Link>
+        </div>
       </nav>
     </header>
   );

@@ -22,6 +22,12 @@ body {
 body {
   background: linear-gradient(to bottom right, #f0f9ff, #e0f2fe);
   min-height: 100vh;
+  color: #374151; /* Default text color */
+}
+
+.dark body {
+  background: #111827; /* Dark background */
+  color: #d1d5db; /* Default dark text color */
 }
 
 /* Custom scrollbar */
@@ -33,13 +39,25 @@ body {
   background: #f1f1f1;
 }
 
+.dark ::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #0ea5e9;
   border-radius: 5px;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+}
+
 ::-webkit-scrollbar-thumb:hover {
   background: #0284c7;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
 }
 
 /* Smooth transitions */

@@ -41,8 +41,8 @@ export default function Results() {
         <main className="min-h-screen py-12">
           <div className="container mx-auto px-4 max-w-4xl">
             <div className="text-center mb-8">
-              <h1 className="text-4xl font-bold text-gray-800 mb-2">📊 Your Analysis Results</h1>
-              <p className="text-gray-600">
+              <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-2">📊 Your Analysis Results</h1>
+              <p className="text-gray-600 dark:text-gray-300">
                 {history.length > 0
                   ? "Select a past result to view details"
                   : "No history yet. Run a symptom check to see results here."}
@@ -55,8 +55,8 @@ export default function Results() {
                   {history.slice(0, 10).map((item, idx) => (
                     <li key={item.id || idx} className="py-3 flex items-center justify-between gap-4">
                       <div className="min-w-0">
-                        <p className="font-medium text-gray-800 truncate">{item.input?.symptoms}</p>
-                        <p className="text-xs text-gray-500">{new Date(item.timestamp).toLocaleString()}</p>
+                        <p className="font-medium text-gray-800 dark:text-white truncate">{item.input?.symptoms}</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">{new Date(item.timestamp).toLocaleString()}</p>
                       </div>
                       <button
                         onClick={() => { setResult(item.result); setSelectedIndex(idx); }}
@@ -69,8 +69,8 @@ export default function Results() {
                 </ul>
                 <div className="text-right mt-4">
                   <button
-                    onClick={() => { localStorage.removeItem("sc_history"); setHistory([]); setSelectedIndex(-1); }}
-                    className="text-sm text-gray-600 hover:text-gray-800 underline"
+                    onClick={() => { localStorage.removeItem("sc_history"); setHistory([]); setResult(null); setSelectedIndex(-1); }}
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-500 underline"
                   >
                     Clear history
                   </button>
@@ -106,18 +106,16 @@ export default function Results() {
         <div className="container mx-auto px-4 max-w-4xl">
           {/* Page Header */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-800 mb-4">
+            <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">
               📊 Your Analysis Results
             </h1>
-            <p className="text-gray-600">
-              Review your symptom analysis and recommendations
-            </p>
+            <p className="text-gray-600 dark:text-gray-300">No history yet. Your symptom checks will appear here.</p>
           </div>
 
           {/* Recent History */}
           {history.length > 0 && (
             <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">Recent Checks</h3>
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">Analysis History</h2>
               <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
                 {history.slice(0, 5).map((item, idx) => (
                   <button
@@ -157,8 +155,9 @@ export default function Results() {
 
           {/* Important Notice */}
           <div className="mt-12 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">📌 Remember</h3>
-            <p className="text-gray-700">
+            <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">No Result Selected</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-6">Please select an item from your history to view the details.</p>
+            <p className="text-gray-600 dark:text-gray-300">
               These results are for educational purposes only. If you have concerns about your health, please consult with a qualified
               healthcare professional. For emergencies, contact your local emergency services immediately.
             </p>

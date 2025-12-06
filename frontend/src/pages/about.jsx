@@ -19,19 +19,19 @@ export default function About() {
         <div className="container mx-auto px-4 max-w-4xl">
           {/* Page Header */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 mb-4">
               About <span className="text-primary-500">SymptoCare AI</span>
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-600 dark:text-gray-300">
               Your Educational Healthcare Companion
             </p>
           </div>
 
           {/* Main Content */}
-          <div className="bg-white rounded-lg shadow-lg p-8 space-y-8">
+          <div className="bg-white dark:bg-gray-800/50 rounded-lg shadow-lg p-8 space-y-8">
             {/* What is SymptoCare AI */}
             <section>
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center">
                 <svg
                   className="w-7 h-7 mr-2 text-primary-500"
                   fill="none"
@@ -47,7 +47,7 @@ export default function About() {
                 </svg>
                 What is SymptoCare AI?
               </h2>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                 SymptoCare AI is an educational healthcare tool that uses
                 advanced artificial intelligence to help you understand your
                 symptoms better. Powered by Google Gemini AI, our system
@@ -58,7 +58,7 @@ export default function About() {
 
             {/* How It Works */}
             <section>
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center">
                 <svg
                   className="w-7 h-7 mr-2 text-primary-500"
                   fill="none"
@@ -76,14 +76,14 @@ export default function About() {
               </h2>
               <div className="space-y-4">
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center text-primary-600 font-bold mr-4">
+                  <div className="flex-shrink-0 w-8 h-8 bg-primary-100 dark:bg-primary-500 rounded-full flex items-center justify-center text-primary-600 font-bold mr-4">
                     1
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">
+                    <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-1">
                       Describe Your Symptoms
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 dark:text-gray-300">
                       Enter detailed information about what you're experiencing,
                       including when symptoms started and their severity.
                     </p>
@@ -91,14 +91,14 @@ export default function About() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center text-primary-600 font-bold mr-4">
+                  <div className="flex-shrink-0 w-8 h-8 bg-primary-100 dark:bg-primary-500 rounded-full flex items-center justify-center text-primary-600 font-bold mr-4">
                     2
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">
+                    <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-1">
                       AI Analysis
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 dark:text-gray-300">
                       Our AI system processes your input using advanced natural
                       language understanding and medical knowledge bases.
                     </p>
@@ -106,14 +106,14 @@ export default function About() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center text-primary-600 font-bold mr-4">
+                  <div className="flex-shrink-0 w-8 h-8 bg-primary-100 dark:bg-primary-500 rounded-full flex items-center justify-center text-primary-600 font-bold mr-4">
                     3
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">
+                    <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-1">
                       Educational Results
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 dark:text-gray-300">
                       Receive information about possible conditions, severity
                       assessment, and general recommendations.
                     </p>
@@ -124,7 +124,7 @@ export default function About() {
 
             {/* Technology Stack */}
             <section>
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center">
                 <svg
                   className="w-7 h-7 mr-2 text-primary-500"
                   fill="none"
@@ -141,18 +141,18 @@ export default function About() {
                 Technology Stack
               </h2>
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="border-2 border-gray-200 rounded-lg p-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Frontend</h3>
-                  <ul className="text-gray-600 space-y-1 text-sm">
+                <div className="border-2 border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                  <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-2">Frontend</h3>
+                  <ul className="text-gray-600 dark:text-gray-300 space-y-1 text-sm">
                     <li>• Next.js 14 (React Framework)</li>
                     <li>• Tailwind CSS (Styling)</li>
                     <li>• Axios (API Communication)</li>
                   </ul>
                 </div>
 
-                <div className="border-2 border-gray-200 rounded-lg p-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Backend</h3>
-                  <ul className="text-gray-600 space-y-1 text-sm">
+                <div className="border-2 border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                  <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-2">Backend</h3>
+                  <ul className="text-gray-600 dark:text-gray-300 space-y-1 text-sm">
                     <li>• Node.js + Express</li>
                     <li>• Google Gemini API</li>
                     <li>• RESTful Architecture</li>
@@ -162,8 +162,8 @@ export default function About() {
             </section>
 
             {/* Important Information */}
-            <section className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+            <section className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:bg-gray-800/50 dark:border-gray-700 border border-blue-200 rounded-lg p-6">
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center">
                 <svg
                   className="w-7 h-7 mr-2 text-primary-500"
                   fill="none"
@@ -179,7 +179,7 @@ export default function About() {
                 </svg>
                 Important to Know
               </h2>
-              <ul className="space-y-3 text-gray-700">
+              <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                 <li className="flex items-start">
                   <span className="mr-2 text-primary-500 font-bold">•</span>
                   <span>
@@ -209,7 +209,7 @@ export default function About() {
 
             {/* Purpose */}
             <section>
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center">
                 <svg
                   className="w-7 h-7 mr-2 text-primary-500"
                   fill="none"
@@ -225,7 +225,7 @@ export default function About() {
                 </svg>
                 Educational Purpose
               </h2>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                 SymptoCare AI is designed as an{" "}
                 <strong>educational tool</strong> to help users learn about
                 general health information and understand when they should seek
@@ -237,7 +237,7 @@ export default function About() {
 
             {/* Project Info */}
             <section>
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center">
                 <svg
                   className="w-7 h-7 mr-2 text-primary-500"
                   fill="none"
@@ -253,14 +253,14 @@ export default function About() {
                 </svg>
                 Project Information
               </h2>
-              <div className="bg-gray-50 rounded-lg p-4 space-y-2">
-                <p className="text-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 space-y-2">
+                <p className="text-gray-700 dark:text-gray-300">
                   <strong>Developed for:</strong> Unthinkable Solutions Assignment
                 </p>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   <strong>Purpose:</strong> Educational Healthcare Demonstration
                 </p>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   <strong>Status:</strong> Assignment Project (Not for Commercial Use)
                 </p>
               </div>
@@ -268,7 +268,7 @@ export default function About() {
 
             {/* Contact CTA */}
             <section className="text-center pt-6 border-t-2 border-gray-200">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+              <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
                 Ready to Try It?
               </h3>
               <a
