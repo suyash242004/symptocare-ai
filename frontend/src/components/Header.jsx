@@ -41,6 +41,12 @@ export default function Header() {
             Check Symptoms
           </Link>
           <Link
+            href="/results"
+            className="text-gray-600 hover:text-primary-500 font-medium"
+          >
+            History
+          </Link>
+          <Link
             href="/about"
             className="text-gray-600 hover:text-primary-500 font-medium"
           >

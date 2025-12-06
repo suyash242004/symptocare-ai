@@ -144,11 +144,10 @@ export default function ResultCard({ result }) {
       )}
 
       {/* Disclaimer */}
-      <div className="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-4">
-        <p className="text-sm text-yellow-800">
-          <strong>⚠️ Medical Disclaimer:</strong>{" "}
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4">
+        <p className="text-xs text-gray-700 leading-relaxed">
           {result.disclaimer ||
-            "This information is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment."}
+            "This information is for educational purposes only. Always consult with a qualified healthcare professional for medical advice, diagnosis, or treatment."}
         </p>
       </div>
     </div>

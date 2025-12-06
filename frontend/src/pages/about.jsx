@@ -50,7 +50,7 @@ export default function About() {
               <p className="text-gray-700 leading-relaxed">
                 SymptoCare AI is an educational healthcare tool that uses
                 advanced artificial intelligence to help you understand your
-                symptoms better. Powered by Anthropic's Claude AI, our system
+                symptoms better. Powered by Google Gemini AI, our system
                 analyzes symptom descriptions and provides general health
                 information based on medical knowledge.
               </p>
@@ -144,7 +144,7 @@ export default function About() {
                 <div className="border-2 border-gray-200 rounded-lg p-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Frontend</h3>
                   <ul className="text-gray-600 space-y-1 text-sm">
-                    <li>• Next.js (React Framework)</li>
+                    <li>• Next.js 14 (React Framework)</li>
                     <li>• Tailwind CSS (Styling)</li>
                     <li>• Axios (API Communication)</li>
                   </ul>
@@ -154,18 +154,18 @@ export default function About() {
                   <h3 className="font-semibold text-gray-800 mb-2">Backend</h3>
                   <ul className="text-gray-600 space-y-1 text-sm">
                     <li>• Node.js + Express</li>
-                    <li>• Anthropic Claude API</li>
+                    <li>• Google Gemini API</li>
                     <li>• RESTful Architecture</li>
                   </ul>
                 </div>
               </div>
             </section>
 
-            {/* Important Disclaimer */}
-            <section className="bg-red-50 border-2 border-red-200 rounded-lg p-6">
-              <h2 className="text-2xl font-bold text-red-800 mb-4 flex items-center">
+            {/* Important Information */}
+            <section className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-6">
+              <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
                 <svg
-                  className="w-7 h-7 mr-2"
+                  className="w-7 h-7 mr-2 text-primary-500"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -174,42 +174,34 @@ export default function About() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                Important Limitations
+                Important to Know
               </h2>
-              <ul className="space-y-3 text-red-800">
+              <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start">
-                  <span className="mr-2 font-bold">⚠️</span>
+                  <span className="mr-2 text-primary-500 font-bold">•</span>
                   <span>
-                    <strong>Not a Medical Diagnosis:</strong> This tool provides
-                    educational information only and cannot diagnose medical
-                    conditions.
+                    <strong>Educational Tool:</strong> SymptoCare AI provides general health information for learning purposes only.
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="mr-2 font-bold">⚠️</span>
+                  <span className="mr-2 text-primary-500 font-bold">•</span>
                   <span>
-                    <strong>Not a Replacement:</strong> Always consult qualified
-                    healthcare professionals for medical advice, diagnosis, or
-                    treatment.
+                    <strong>Not Medical Advice:</strong> Always consult qualified healthcare professionals for medical diagnosis and treatment.
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="mr-2 font-bold">⚠️</span>
+                  <span className="mr-2 text-primary-500 font-bold">•</span>
                   <span>
-                    <strong>Emergency Care:</strong> For serious symptoms or
-                    emergencies, seek immediate medical attention or call
-                    emergency services.
+                    <strong>Emergencies:</strong> For serious symptoms or medical emergencies, seek immediate professional medical attention.
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="mr-2 font-bold">⚠️</span>
+                  <span className="mr-2 text-primary-500 font-bold">•</span>
                   <span>
-                    <strong>AI Limitations:</strong> AI systems can make
-                    mistakes. Never rely solely on automated tools for health
-                    decisions.
+                    <strong>AI Limitations:</strong> AI systems can make mistakes. Use this tool as a learning resource, not a diagnostic tool.
                   </span>
                 </li>
               </ul>
@@ -263,18 +255,13 @@ export default function About() {
               </h2>
               <div className="bg-gray-50 rounded-lg p-4 space-y-2">
                 <p className="text-gray-700">
-                  <strong>Developed for:</strong> Unthinkable Solutions
-                  Assignment
-                </p>
-                <p className="text-gray-700">
-                  <strong>Powered by:</strong> Anthropic Claude AI
+                  <strong>Developed for:</strong> Unthinkable Solutions Assignment
                 </p>
                 <p className="text-gray-700">
                   <strong>Purpose:</strong> Educational Healthcare Demonstration
                 </p>
                 <p className="text-gray-700">
-                  <strong>Status:</strong> Assignment Project (Not for
-                  Commercial Use)
+                  <strong>Status:</strong> Assignment Project (Not for Commercial Use)
                 </p>
               </div>
             </section>

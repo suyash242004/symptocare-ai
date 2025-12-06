@@ -9,33 +9,83 @@ import ResultCard from "@/components/ResultCard";
 export default function Results() {
   const router = useRouter();
   const [result, setResult] = useState(null);
+  const [history, setHistory] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
   useEffect(() => {
-    // Check if result data exists in router state
-    if (router.query.data) {
-      try {
+    try {
+      const raw = localStorage.getItem("sc_history");
+      const parsed = raw ? JSON.parse(raw) : [];
+      setHistory(parsed);
+
+      if (router.query.data) {
         const parsedData = JSON.parse(decodeURIComponent(router.query.data));
         setResult(parsedData);
-      } catch (error) {
-        console.error("Failed to parse result data:", error);
+        setSelectedIndex(-1);
+      } else if (parsed.length > 0) {
+        setResult(parsed[0].result);
+        setSelectedIndex(0);
       }
-    } else {
-      // If no data, redirect to check page
-      router.push("/check");
+    } catch (error) {
+      console.error("Failed to load history:", error);
     }
-  }, [router]);
+  }, [router.query.data]);
 
   if (!result) {
     return (
       <>
         <Head>
-          <title>Loading Results - SymptoCare AI</title>
+          <title>Results - SymptoCare AI</title>
         </Head>
         <Header />
-        <main className="min-h-screen flex items-center justify-center">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-primary-500 mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading results...</p>
+        <main className="min-h-screen py-12">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="text-center mb-8">
+              <h1 className="text-4xl font-bold text-gray-800 mb-2">📊 Your Analysis Results</h1>
+              <p className="text-gray-600">
+                {history.length > 0
+                  ? "Select a past result to view details"
+                  : "No history yet. Run a symptom check to see results here."}
+              </p>
+            </div>
+
+            {history.length > 0 ? (
+              <div className="bg-white rounded-lg shadow-lg p-6">
+                <ul className="divide-y divide-gray-100">
+                  {history.slice(0, 10).map((item, idx) => (
+                    <li key={item.id || idx} className="py-3 flex items-center justify-between gap-4">
+                      <div className="min-w-0">
+                        <p className="font-medium text-gray-800 truncate">{item.input?.symptoms}</p>
+                        <p className="text-xs text-gray-500">{new Date(item.timestamp).toLocaleString()}</p>
+                      </div>
+                      <button
+                        onClick={() => { setResult(item.result); setSelectedIndex(idx); }}
+                        className="bg-primary-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-600"
+                      >
+                        View
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                <div className="text-right mt-4">
+                  <button
+                    onClick={() => { localStorage.removeItem("sc_history"); setHistory([]); setSelectedIndex(-1); }}
+                    className="text-sm text-gray-600 hover:text-gray-800 underline"
+                  >
+                    Clear history
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="text-center">
+                <a
+                  href="/check"
+                  className="inline-block bg-primary-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-600"
+                >
+                  Start Symptom Check
+                </a>
+              </div>
+            )}
           </div>
         </main>
         <Footer />
@@ -64,6 +114,27 @@ export default function Results() {
             </p>
           </div>
 
+          {/* Recent History */}
+          {history.length > 0 && (
+            <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">Recent Checks</h3>
+              <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
+                {history.slice(0, 5).map((item, idx) => (
+                  <button
+                    key={item.id || idx}
+                    onClick={() => { setResult(item.result); setSelectedIndex(idx); }}
+                    className={`px-4 py-2 rounded-lg border text-sm hover:bg-gray-50 ${
+                      selectedIndex === idx ? "border-primary-500 text-primary-600" : "border-gray-200 text-gray-700"
+                    }`}
+                    title={item.input?.symptoms}
+                  >
+                    {new Date(item.timestamp).toLocaleDateString()} #{(history.length - idx)}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Results */}
           <ResultCard result={result} />
 
@@ -85,15 +156,11 @@ export default function Results() {
           </div>
 
           {/* Important Notice */}
-          <div className="mt-12 bg-yellow-50 border-2 border-yellow-300 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-yellow-800 mb-2">
-              📌 Remember
-            </h3>
-            <p className="text-yellow-700">
-              These results are for educational purposes only. If you have
-              concerns about your health, please consult with a qualified
-              healthcare professional. For emergencies, call your local
-              emergency services immediately.
+          <div className="mt-12 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">📌 Remember</h3>
+            <p className="text-gray-700">
+              These results are for educational purposes only. If you have concerns about your health, please consult with a qualified
+              healthcare professional. For emergencies, contact your local emergency services immediately.
             </p>
           </div>
         </div>

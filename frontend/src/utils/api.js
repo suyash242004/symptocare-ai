@@ -42,7 +42,26 @@ export const checkHealth = async () => {
     const response = await api.get("/health");
     return response.data;
   } catch (error) {
-    throw error;
+    console.error("Health check failed:", error);
+    return { status: "unhealthy" };
+  }
+};
+
+export const getTriageQuestions = async (symptoms) => {
+  try {
+    const response = await api.post("/api/symptoms/triage-questions", { symptoms });
+    return response.data;
+  } catch (error) {
+    console.error("Failed to get triage questions:", error);
+    // Return generic questions as a fallback
+    return {
+      success: true,
+      questions: [
+        "When did these symptoms start?",
+        "Are the symptoms constant or do they come and go?",
+        "Is there anything that makes the symptoms better or worse?",
+      ],
+    };
   }
 };
 

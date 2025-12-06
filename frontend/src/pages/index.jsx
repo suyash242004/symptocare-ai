@@ -31,10 +31,6 @@ export default function Home() {
               symptoms and provide general health information.
             </p>
 
-            {/* Disclaimer */}
-            <div className="mb-8">
-              <DisclaimerBanner />
-            </div>
 
             {/* CTA Button */}
             <Link
@@ -133,53 +129,90 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Important Information */}
-        <section className="container mx-auto px-4 py-16">
-          <div className="max-w-3xl mx-auto bg-red-50 border-2 border-red-200 rounded-lg p-8">
-            <h2 className="text-2xl font-bold text-red-800 mb-4 flex items-center">
-              <svg
-                className="w-8 h-8 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                />
-              </svg>
-              When to Seek Immediate Medical Attention
-            </h2>
-            <ul className="space-y-2 text-red-700">
-              <li className="flex items-start">
-                <span className="mr-2">🚨</span>
-                <span>Chest pain or pressure</span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-2">🚨</span>
-                <span>Difficulty breathing or shortness of breath</span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-2">🚨</span>
-                <span>Severe bleeding or trauma</span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-2">🚨</span>
-                <span>Sudden severe headache or vision changes</span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-2">🚨</span>
-                <span>
-                  Signs of stroke (face drooping, arm weakness, speech
-                  difficulty)
-                </span>
-              </li>
-            </ul>
-            <p className="mt-4 font-semibold text-red-800">
-              For emergencies, call your local emergency number immediately!
-            </p>
+        {/* Trust & Safety Section */}
+        <section className="bg-gradient-to-r from-blue-50 to-indigo-50 py-16">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-800 text-center mb-12">
+                How SymptoCare AI Works
+              </h2>
+              <div className="grid md:grid-cols-3 gap-8">
+                {/* Trust */}
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+                    <svg
+                      className="w-8 h-8 text-primary-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                    Educational Focus
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    Designed to help you understand health information, not replace professional medical advice
+                  </p>
+                </div>
+
+                {/* Accuracy */}
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+                    <svg
+                      className="w-8 h-8 text-primary-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 10V3L4 14h7v7l9-11h-7z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                    AI-Powered
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    Powered by Google Gemini for intelligent symptom analysis
+                  </p>
+                </div>
+
+                {/* Safety */}
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+                    <svg
+                      className="w-8 h-8 text-primary-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                    Your Privacy
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    Your information is processed securely and never stored
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
