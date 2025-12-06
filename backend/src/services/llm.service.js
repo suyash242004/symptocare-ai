@@ -1,55 +1,43 @@
-const Anthropic = require("@anthropic-ai/sdk");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 class LLMService {
   constructor() {
-    this.client = new Anthropic({
-      apiKey: process.env.ANTHROPIC_API_KEY,
+    this.genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    this.model = this.genAI.getGenerativeModel({
+      model: "gemini-2.0-flash",
     });
   }
 
-  /**
-   * Analyze symptoms using Claude API
-   * @param {string} symptoms - User's symptom description
-   * @param {object} metadata - Additional user data (age, gender, duration)
-   * @returns {Promise<object>} Analysis results
-   */
   async analyzeSymptoms(symptoms, metadata = {}) {
     try {
       const prompt = this.constructPrompt(symptoms, metadata);
 
-      const response = await this.client.messages.create({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 2000,
-        messages: [
-          {
-            role: "user",
-            content: prompt,
-          },
-        ],
-      });
+      console.log("🔍 Calling Google Gemini API...");
 
-      const analysisText = response.content[0].text;
+      const result = await this.model.generateContent(prompt);
+      const response = await result.response;
+      const analysisText = response.text();
+
+      console.log("✅ Gemini API response received");
+
       return this.parseResponse(analysisText);
     } catch (error) {
-      console.error("LLM Service Error:", error);
+      console.error("❌ LLM Service Error:", error.message);
       throw new Error("Failed to analyze symptoms. Please try again.");
     }
   }
 
-  /**
-   * Construct detailed prompt for Claude
-   */
   constructPrompt(symptoms, metadata) {
     const { age, gender, duration } = metadata;
 
-    return `You are a medical education assistant. Analyze the following symptoms and provide educational information.
+    return `You are a medical education assistant. Analyze symptoms and provide educational information.
 
 **CRITICAL INSTRUCTIONS:**
-1. This is for EDUCATIONAL purposes only
-2. Do NOT provide definitive diagnoses
+1. Educational purposes ONLY
+2. NO definitive diagnoses
 3. Always recommend consulting healthcare professionals
-4. Use cautious, conservative language
-5. Highlight red flags requiring immediate attention
+4. Use cautious language
+5. Highlight emergency red flags
 
 **Patient Information:**
 - Symptoms: ${symptoms}
@@ -57,7 +45,7 @@ ${age ? `- Age: ${age}` : ""}
 ${gender ? `- Gender: ${gender}` : ""}
 ${duration ? `- Duration: ${duration}` : ""}
 
-**Provide response in this JSON format:**
+**RESPOND ONLY WITH THIS EXACT JSON FORMAT (no markdown, no extra text):**
 {
   "possibleConditions": [
     {
@@ -72,31 +60,30 @@ ${duration ? `- Duration: ${duration}` : ""}
     "Recommendation 2"
   ],
   "redFlags": [
-    "Warning sign 1 if any"
+    "Warning sign if any"
   ],
   "disclaimer": "Educational disclaimer text"
-}
-
-**IMPORTANT:** If symptoms suggest emergency (chest pain, difficulty breathing, severe trauma), mark severity as "High" and include urgent care recommendation.`;
+}`;
   }
 
-  /**
-   * Parse Claude's response into structured format
-   */
   parseResponse(text) {
     try {
-      // Try to extract JSON from response
-      const jsonMatch = text.match(/\{[\s\S]*\}/);
+      // Remove markdown code blocks if present
+      let cleanText = text
+        .replace(/```json\n?/g, "")
+        .replace(/```\n?/g, "")
+        .trim();
+
+      const jsonMatch = cleanText.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
         return JSON.parse(jsonMatch[0]);
       }
 
-      // Fallback: Return structured error
       return {
         possibleConditions: [],
         severity: "Unknown",
         recommendations: [
-          "Unable to analyze symptoms. Please consult a healthcare provider.",
+          "Unable to analyze. Please consult a healthcare provider.",
         ],
         redFlags: [],
         disclaimer:
@@ -108,19 +95,15 @@ ${duration ? `- Duration: ${duration}` : ""}
     }
   }
 
-  /**
-   * Validate API key configuration
-   */
   static validateConfig() {
-    if (!process.env.ANTHROPIC_API_KEY) {
+    if (!process.env.GEMINI_API_KEY) {
       throw new Error(
-        "ANTHROPIC_API_KEY is not configured in environment variables"
+        "GEMINI_API_KEY is not configured in environment variables"
       );
     }
   }
 }
 
-// Validate configuration on module load
 LLMService.validateConfig();
 
 module.exports = new LLMService();
